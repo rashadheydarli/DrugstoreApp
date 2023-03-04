@@ -1,19 +1,18 @@
 ﻿<Properties StartupConfiguration="{F223C4CC-156E-47BB-BA5F-809C83F76283}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Presentation PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Presentation/Services/DrugstoreService.cs">
     <Files>
-      <File FileName="Presentation/Program.cs" Line="23" Column="8" />
-      <File FileName="Presentation/Services/DrugstoreService.cs" Line="304" Column="36" />
-      <File FileName="Presentation/Services/DrugService.cs" Line="28" Column="3" />
-      <File FileName="Presentation/Services/OwnerService.cs" Line="12" Column="32" />
-      <File FileName="Data/Repositories/Concrete/DrugRepository.cs" Line="1" Column="1" />
-      <File FileName="Data/Repositories/Concrete/DrugstoreRepository.cs" Line="1" Column="1" />
-      <File FileName="Data/Contexts/DbContext.cs" Line="1" Column="1" />
-      <File FileName="Data/Repositories/Concrete/DruggistRepository.cs" Line="1" Column="1" />
-      <File FileName="Core/Entities/Owner.cs" Line="8" Column="39" />
+      <File FileName="Presentation/Program.cs" />
+      <File FileName="Presentation/Services/DrugstoreService.cs" Line="126" Column="1" />
+      <File FileName="Presentation/Services/DrugService.cs" />
+      <File FileName="Presentation/Services/OwnerService.cs" />
+      <File FileName="Data/Repositories/Concrete/OwnerRepository.cs" />
+      <File FileName="Data/Repositories/Concrete/DrugstoreRepository.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -42,9 +41,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/rashadheydarli/Desktop/FinalProject/Presentation/Services/DrugstoreService.cs" relfile="Presentation/Services/DrugstoreService.cs" line="121" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Presentation PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

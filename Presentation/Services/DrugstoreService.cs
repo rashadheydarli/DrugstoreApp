@@ -30,7 +30,7 @@ namespace Presentation.Services
 			ConsoleHelper.WriteWithColor("--All Drugstores--", ConsoleColor.Cyan);
 			foreach (var drugstore in drugstores)
 			{
-				ConsoleHelper.WriteWithColor($"Name:{drugstore.Name}, Address: {drugstore.Address}, Owner: {drugstore.Owner}", ConsoleColor.Cyan);
+				ConsoleHelper.WriteWithColor($"Id:{drugstore.Id}, Name:{drugstore.Name}, Address: {drugstore.Address}, Owner: {drugstore.Owner}", ConsoleColor.Cyan);
 			}
 		}
 
@@ -95,7 +95,7 @@ namespace Presentation.Services
 			var owners= _ownerRepository.GetAll();
             foreach (var item in owners)
             {
-                ConsoleHelper.WriteWithColor($"{item.Name} ,Address: {item.Surname}, Owner: {item.Drugstores} Created at : {item.CreatedAt} is successfully added", ConsoleColor.Green);
+                ConsoleHelper.WriteWithColor($"Id:{item.Id}, Name: {item.Name} ,Address: {item.Surname}, Owner: {item.Drugstores} Created at : {item.CreatedAt} is successfully added", ConsoleColor.Green);
 
             }
             int ownerId;
@@ -120,10 +120,10 @@ namespace Presentation.Services
 			};
 			owner.Drugstores.Add(drugstore);
 			_drugstoreRepository.Add(drugstore);
-            ConsoleHelper.WriteWithColor($"{drugstore.Name} ,Surname: {drugstore.Address}, Drugstore: {drugstore.Owner} Created at : {drugstore.CreatedAt} is successfully added", ConsoleColor.Green);
+            ConsoleHelper.WriteWithColor($"Id: {drugstore.Id}, Name: {drugstore.Name} ,Address: {drugstore.Address}, Owner: {drugstore.Owner.Name} Created at : {drugstore.CreatedAt} is successfully added by {drugstore.CreatedBy}", ConsoleColor.Green);
 
         }
-
+R
 		public void Update(Admin admin)
 		{
 			GetAll();
@@ -161,7 +161,7 @@ namespace Presentation.Services
             var owners= _ownerRepository.GetAll();
             foreach (var item in owners)
             {
-                ConsoleHelper.WriteWithColor($"{item.Name} ,Surname: {item.Surname}, Drugstore: {item.Drugstores} Created at : {item.CreatedAt} is successfully added", ConsoleColor.Green);
+                ConsoleHelper.WriteWithColor($"{item.Id}, Name: {item.Name} ,Surname: {item.Surname}, Drugstore: {item.Drugstores} Created at : {item.CreatedAt} is successfully added", ConsoleColor.Green);
 
             }
             int ownerId;
@@ -184,7 +184,7 @@ namespace Presentation.Services
             drugstore.ModifiedAt = DateTime.Now;
 
             _drugstoreRepository.Update(drugstore);
-            ConsoleHelper.WriteWithColor($"{drugstore.Name} ,Address: {drugstore.Address}, Owner: {drugstore.Owner} Modified at : {drugstore.ModifiedAt} is successfully updated", ConsoleColor.Green);
+            ConsoleHelper.WriteWithColor($"Id:{drugstore.Id}, Name: {drugstore.Name} ,Address: {drugstore.Address}, Owner: {drugstore.Owner} Modified at : {drugstore.ModifiedAt} is successfully updated by {drugstore.ModifiedBy}" , ConsoleColor.Green);
 
         }
 
@@ -213,7 +213,7 @@ namespace Presentation.Services
             var owners= _ownerRepository.GetAll();
             foreach (var item in owners)
             {
-                ConsoleHelper.WriteWithColor($"{item.Name} ,Surname: {item.Surname}, Owner: {item.Drugstores} Created at : {item.CreatedAt} is successfully added", ConsoleColor.Green);
+                ConsoleHelper.WriteWithColor($"id: {item.Id}, Name: {item.Name} ,Surname: {item.Surname}, Owner: {item.Drugstores} Created at : {item.CreatedAt} is successfully added", ConsoleColor.Green);
 
             }
         OwnerDesc: ConsoleHelper.WriteWithColor("Enter onwer id", ConsoleColor.Cyan);
@@ -302,7 +302,7 @@ namespace Presentation.Services
                 ConsoleHelper.WriteWithColor($" Total Price: {totalPrice} ", ConsoleColor.Cyan);
             }
 
-            ConsoleHelper.WriteWithColor($" Count:{dbDrug.Count} ! ", ConsoleColor.Red);
+            ConsoleHelper.WriteWithColor($" Count:{dbDrug.Count}", ConsoleColor.Red);
 
             var dbstock = dbDrug.Count - count;
             dbDrug.Count = dbstock;

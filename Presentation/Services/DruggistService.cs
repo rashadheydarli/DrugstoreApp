@@ -51,7 +51,7 @@ namespace Presentation.Services
             {
                 foreach (var item in druggist.Druggists)
                 {
-                    ConsoleHelper.WriteWithColor($"Id: {item.Id}, Name: {item.Name}, Age:{item.Age}, Experience: {item.Experience},Created at : {item.CreatedAt} ", ConsoleColor.Magenta);
+                    ConsoleHelper.WriteWithColor($"Id: {item.Id}, Name: {item.Name}, Age:{item.Age}, Experience: {item.Experience}, Drugstore: {item.Drugstore} ,Created at : {item.CreatedAt} ", ConsoleColor.Magenta);
 
                 }
 
@@ -123,7 +123,7 @@ namespace Presentation.Services
 
 				drugstore.Druggists.Add(druggist);
 				_druggistRepository.Add(druggist);
-                ConsoleHelper.WriteWithColor($"{druggist.Name} {druggist.Surname} is successfully added", ConsoleColor.Green);
+                ConsoleHelper.WriteWithColor($"{druggist.Name} {druggist.Surname} , Age: {druggist.Age}, Experience: {druggist.Experience}, Drugstore: {druggist.Drugstore} is successfully added by {druggist.CreatedBy}", ConsoleColor.Green);
 
             }
         }
@@ -204,7 +204,7 @@ namespace Presentation.Services
             druggist.ModifiedAt = DateTime.Now;
 
             _druggistRepository.Update(druggist);
-            ConsoleHelper.WriteWithColor($"{druggist.Name} {druggist.Surname} , modified at: {druggist.ModifiedAt} is successfully updated", ConsoleColor.Green);
+            ConsoleHelper.WriteWithColor($"{druggist.Name} {druggist.Surname} ,Age: {druggist.Age}, Experience: {druggist.Experience}, Drugstore: {druggist.Drugstore} , Modified at: {druggist.ModifiedAt} is successfully updated by {druggist.ModifiedBy}", ConsoleColor.Green);
         }
 
         public void Delete()

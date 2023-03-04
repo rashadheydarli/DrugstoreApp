@@ -24,7 +24,7 @@ namespace Presentation.Services
 			ConsoleHelper.WriteWithColor("--All Durgs--", ConsoleColor.Cyan);
 			foreach (var drug in drugs)
 			{
-				ConsoleHelper.WriteWithColor($"{drug.Id}, Name: {drug.Name}, Price {drug.Price}, Count: {drug.Count}, Drugstore: {drug.Drugstore.Name}", ConsoleColor.Cyan);
+				ConsoleHelper.WriteWithColor($"Id: {drug.Id}, Name: {drug.Name}, Price {drug.Price}, Count: {drug.Count}, Drugstore: {drug.Drugstore.Name}", ConsoleColor.Cyan);
 			}
 		}
 
@@ -91,7 +91,7 @@ namespace Presentation.Services
 
         public void Filter(Admin admin)
         {
-            GetAllDrugsByDrugstore();
+            GetAllDrugsByDrugstore(admin);
 
             FilterDesc: ConsoleHelper.WriteWithColor("Show drugs below than the Entered price", ConsoleColor.Cyan);
             decimal price;
@@ -170,7 +170,7 @@ namespace Presentation.Services
 
 			drugstore.Drugs.Add(drug);
 			_drugRepository.Add(drug);
-            ConsoleHelper.WriteWithColor($"Name: {drug.Name},Price: {drug.Price}, Count: {drug.Count}, Drugstore: {drug.Drugstore} is successfully added", ConsoleColor.Green);
+            ConsoleHelper.WriteWithColor($"Name: {drug.Name},Price: {drug.Price}, Count: {drug.Count}, Drugstore: {drug.Drugstore} is successfully added by {drug.CreatedBy}", ConsoleColor.Green);
         }
 
         public void Update(Admin admin)
@@ -234,7 +234,7 @@ namespace Presentation.Services
             drug.ModifiedAt = DateTime.Now;
 
             _drugRepository.Update(drug);
-            ConsoleHelper.WriteWithColor($" Name:{drug.Name}, Price: {drug.Price}, Count: {drug.Count}, Drugstore: {drug.Drugstore}, Modified at: {drug.ModifiedAt} is successfully updated", ConsoleColor.Green);
+            ConsoleHelper.WriteWithColor($" Name:{drug.Name}, Price: {drug.Price}, Count: {drug.Count}, Drugstore: {drug.Drugstore}, Modified at: {drug.ModifiedAt} is successfully updated by {drug.ModifiedBy}", ConsoleColor.Green);
         }
 
 		public void Delete()

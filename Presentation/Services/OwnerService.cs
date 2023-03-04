@@ -65,7 +65,7 @@ namespace Presentation.Services
                 CreatedAt = DateTime.Now,
             };
 			_ownerRepository.Add(owner);
-            ConsoleHelper.WriteWithColor($"Id: {owner.Id}, Name: {owner.Name} {owner.Surname}, Created at : {owner.CreatedAt} is successfully added", ConsoleColor.Green);
+            ConsoleHelper.WriteWithColor($"Id: {owner.Id}, Name: {owner.Name} {owner.Surname}, Created at : {owner.CreatedAt} , Created by {owner.CreatedBy} is successfully added", ConsoleColor.Green);
         }
 
 		public void Update(Admin admin)
@@ -98,7 +98,7 @@ namespace Presentation.Services
 			ConsoleHelper.WriteWithColor("Enter new  Drugstore Id", ConsoleColor.Cyan);
             foreach (var drugstore in drugstores)
             {
-                ConsoleHelper.WriteWithColor($"Id: {drugstore.Id}, Name:{drugstore.Name}, Address: {drugstore.Address} ", ConsoleColor.Cyan);
+                ConsoleHelper.WriteWithColor($"Id: {drugstore.Id}, Name:{drugstore.Name}, Address: {drugstore.Address}, ", ConsoleColor.Cyan);
 
             }
 
@@ -117,7 +117,7 @@ namespace Presentation.Services
 			owner.ModifiedAt = DateTime.Now;
 
 			_ownerRepository.Update(owner);
-            ConsoleHelper.WriteWithColor($" Name: {owner.Name} {owner.Surname},is successfully updated", ConsoleColor.Green);
+            ConsoleHelper.WriteWithColor($" Name: {owner.Name} {owner.Surname},is successfully updated by {owner.ModifiedBy}", ConsoleColor.Green);
 
 
         }
