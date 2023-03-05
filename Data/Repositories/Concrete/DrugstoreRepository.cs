@@ -10,7 +10,7 @@ namespace Data.Repositories.Concrete
 
         public Drugstore Get(int id)
         {
-            return DbContext.Drugstores.FirstOrDefault(d=>d.Id == id);
+            return DbContext.Drugstores.FirstOrDefault(d => d.Id == id);
         }
 
         public List<Drugstore> GetAll()
@@ -22,10 +22,10 @@ namespace Data.Repositories.Concrete
         {
             return DbContext.Drugstores.Where(d => d.Owner.Id == id).ToList();
         }
-       
 
 
-        public void Add(Drugstore  drugstore)
+
+        public void Add(Drugstore drugstore)
         {
             id++;
             drugstore.Id = id;
@@ -35,8 +35,8 @@ namespace Data.Repositories.Concrete
 
         public void Update(Drugstore drugstore)
         {
-            var dbDrugstore = DbContext.Drugstores.FirstOrDefault(d=>d.Id== drugstore.Id);
-            if( dbDrugstore is not null)
+            var dbDrugstore = DbContext.Drugstores.FirstOrDefault(d => d.Id == drugstore.Id);
+            if (dbDrugstore is not null)
             {
                 dbDrugstore.Name = drugstore.Name;
                 dbDrugstore.Address = drugstore.Address;
@@ -55,12 +55,13 @@ namespace Data.Repositories.Concrete
 
         public bool IsDuplicateEmail(string email)
         {
-           return DbContext.Drugstores.Any(d=>d.Email == email);
+            return DbContext.Drugstores.Any(d => d.Email == email);
         }
 
-       
-
-
+        public bool IsDuplicateNumber(string  number)
+        {
+            return DbContext.Drugstores.Any(d => d.ContactNumber == number);
+        }
     }
 }
 

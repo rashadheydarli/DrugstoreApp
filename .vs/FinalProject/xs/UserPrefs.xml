@@ -1,18 +1,14 @@
 ﻿<Properties StartupConfiguration="{F223C4CC-156E-47BB-BA5F-809C83F76283}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Presentation/Services/DrugstoreService.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/Extensions/AppExtension.cs">
     <Files>
-      <File FileName="Presentation/Program.cs" />
-      <File FileName="Presentation/Services/DrugstoreService.cs" Line="126" Column="1" />
-      <File FileName="Presentation/Services/DrugService.cs" />
-      <File FileName="Presentation/Services/OwnerService.cs" />
-      <File FileName="Data/Repositories/Concrete/OwnerRepository.cs" />
-      <File FileName="Data/Repositories/Concrete/DrugstoreRepository.cs" />
+      <File FileName="Presentation/Services/DrugstoreService.cs" Line="108" Column="78" />
+      <File FileName="Data/Repositories/Concrete/DrugstoreRepository.cs" Line="1" Column="1" />
+      <File FileName="Core/Extensions/AppExtension.cs" Line="20" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,7 +17,9 @@
             <Node name="Core" expanded="True">
               <Node name="Constants" expanded="True" />
               <Node name="Entities" expanded="True" />
-              <Node name="Extensions" expanded="True" />
+              <Node name="Extensions" expanded="True">
+                <Node name="AppExtension.cs" selected="True" />
+              </Node>
               <Node name="Helpers" expanded="True" />
             </Node>
             <Node name="Data" expanded="True">
@@ -32,9 +30,7 @@
               </Node>
             </Node>
             <Node name="Presentation" expanded="True">
-              <Node name="Services" expanded="True">
-                <Node name="DrugstoreService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -42,4 +38,5 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Presentation PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

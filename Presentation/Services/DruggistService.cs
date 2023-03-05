@@ -118,6 +118,7 @@ namespace Presentation.Services
 					Age = age,
 					Experience = experience,
 					Drugstore = drugstore,
+                    CreatedBy= admin.Username,
 					CreatedAt= DateTime.Now,
 				};
 
@@ -201,6 +202,7 @@ namespace Presentation.Services
             druggist.Age = age;
             druggist.Experience = experience;
             druggist.Drugstore = drugstore;
+            druggist.ModifiedBy = admin.Username;
             druggist.ModifiedAt = DateTime.Now;
 
             _druggistRepository.Update(druggist);

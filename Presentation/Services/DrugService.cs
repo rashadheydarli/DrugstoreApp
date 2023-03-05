@@ -165,7 +165,8 @@ namespace Presentation.Services
 				Name = name,
 				Price = price,
 				Count = count,
-				Drugstore = drugstore
+				Drugstore = drugstore,
+                CreatedBy= admin.Username
 			};
 
 			drugstore.Drugs.Add(drug);
@@ -231,6 +232,7 @@ namespace Presentation.Services
             drug.Price = price;
             drug.Count = count;
             drug.Drugstore = drugstore;
+            drug.ModifiedBy = admin.Username;
             drug.ModifiedAt = DateTime.Now;
 
             _drugRepository.Update(drug);

@@ -30,7 +30,7 @@ namespace Presentation.Services
 			ConsoleHelper.WriteWithColor("--All Drugstores--", ConsoleColor.Cyan);
 			foreach (var drugstore in drugstores)
 			{
-				ConsoleHelper.WriteWithColor($"Id:{drugstore.Id}, Name:{drugstore.Name}, Address: {drugstore.Address}, Owner: {drugstore.Owner}", ConsoleColor.Cyan);
+				ConsoleHelper.WriteWithColor($"Id:{drugstore.Id}, Name:{drugstore.Name}, Address: {drugstore.Address}, Owner: {drugstore.Owner?.Name}", ConsoleColor.Cyan);
 			}
 		}
 
@@ -69,14 +69,20 @@ namespace Presentation.Services
             ConsoleHelper.WriteWithColor("Enter drugstore address", ConsoleColor.Cyan);
 			string address = Console.ReadLine();
 
-            Contact:  ConsoleHelper.WriteWithColor("Enter contact number", ConsoleColor.Cyan);
-			int contact;
-			bool isSuccessed = int.TryParse(Console.ReadLine(), out contact);
-			if (!isSuccessed)
-			{
-                ConsoleHelper.WriteWithColor("contact number is not correct format!", ConsoleColor.Red);
-				goto Contact;
+        NumberDesc: ConsoleHelper.WriteWithColor("Enter contact number", ConsoleColor.Cyan);
+            string contact = Console.ReadLine();
+            if (!(contact.IsNumber()))
+            {
+                ConsoleHelper.WriteWithColor("Number is not correct format!", ConsoleColor.Red);
+                goto NumberDesc;
             }
+            if (_drugstoreRepository.IsDuplicateNumber(contact))
+            {
+                ConsoleHelper.WriteWithColor("This number already used", ConsoleColor.Red);
+                goto NumberDesc;
+            }
+            
+
         EmailDesc: ConsoleHelper.WriteWithColor("Enter Drugstore Email", ConsoleColor.Cyan);
             string email = Console.ReadLine();
             if(!(email.IsEmail()))
@@ -95,11 +101,11 @@ namespace Presentation.Services
 			var owners= _ownerRepository.GetAll();
             foreach (var item in owners)
             {
-                ConsoleHelper.WriteWithColor($"Id:{item.Id}, Name: {item.Name} ,Address: {item.Surname}, Owner: {item.Drugstores} Created at : {item.CreatedAt} is successfully added", ConsoleColor.Green);
+                ConsoleHelper.WriteWithColor($"Id:{item.Id}, Name: {item.Name} ,Surname: {item.Surname}, Owner: {item.Drugstores} Created at : {item.CreatedAt} is successfully added", ConsoleColor.Green);
 
             }
             int ownerId;
-            isSuccessed = int.TryParse(Console.ReadLine(), out ownerId);
+            bool isSuccessed = int.TryParse(Console.ReadLine(), out ownerId);
             if (!isSuccessed)
             {
                 ConsoleHelper.WriteWithColor("Owner id is not correct format!", ConsoleColor.Red);
@@ -116,14 +122,15 @@ namespace Presentation.Services
 				Name = name,
 				Address = address,
 				ContactNumber = contact,
-				Owner = owner
+				Owner = owner,
+                CreatedBy=admin.Username
 			};
 			owner.Drugstores.Add(drugstore);
 			_drugstoreRepository.Add(drugstore);
-            ConsoleHelper.WriteWithColor($"Id: {drugstore.Id}, Name: {drugstore.Name} ,Address: {drugstore.Address}, Owner: {drugstore.Owner.Name} Created at : {drugstore.CreatedAt} is successfully added by {drugstore.CreatedBy}", ConsoleColor.Green);
+            ConsoleHelper.WriteWithColor($"Id: {drugstore.Id}, Name: {drugstore.Name} ,Address: {drugstore.Address}, Owner: {drugstore.Owner?.Name} Created at : {drugstore.CreatedAt} is successfully added by {drugstore.CreatedBy}", ConsoleColor.Green);
 
         }
-R
+
 		public void Update(Admin admin)
 		{
 			GetAll();
@@ -143,21 +150,17 @@ R
                     goto StoreDesc;
                 }
 			}
+
             ConsoleHelper.WriteWithColor("Enter new drugstore name", ConsoleColor.Cyan);
             string name = Console.ReadLine();
+
             ConsoleHelper.WriteWithColor("Enter new drugstore address", ConsoleColor.Cyan);
             string address = Console.ReadLine();
 
-			Contact: ConsoleHelper.WriteWithColor("Enter new contact number", ConsoleColor.Cyan);
-            int contact;
-            bool isSuccessed = int.TryParse(Console.ReadLine(), out contact);
-            if (!isSuccessed)
-            {
-                ConsoleHelper.WriteWithColor("contact number is not correct format!", ConsoleColor.Red);
-                goto Contact;
-            }
+			ConsoleHelper.WriteWithColor("Enter new contact number", ConsoleColor.Cyan);
+            string contact= Console.ReadLine();
 
-              OwnerDesc: ConsoleHelper.WriteWithColor("Enter drugstore owner", ConsoleColor.Cyan);
+            OwnerDesc: ConsoleHelper.WriteWithColor("Enter drugstore owner", ConsoleColor.Cyan);
             var owners= _ownerRepository.GetAll();
             foreach (var item in owners)
             {
@@ -165,7 +168,7 @@ R
 
             }
             int ownerId;
-            isSuccessed = int.TryParse(Console.ReadLine(), out ownerId);
+            bool isSuccessed = int.TryParse(Console.ReadLine(), out ownerId);
             if (!isSuccessed)
             {
                 ConsoleHelper.WriteWithColor("Owner id is not correct format!", ConsoleColor.Red);
@@ -181,6 +184,7 @@ R
             drugstore.Address = address;
             drugstore.ContactNumber = contact;
             drugstore.Owner = owner;
+            drugstore.ModifiedBy = admin.Username;
             drugstore.ModifiedAt = DateTime.Now;
 
             _drugstoreRepository.Update(drugstore);
@@ -287,9 +291,10 @@ R
                 ConsoleHelper.WriteWithColor(" Count is not correct format ! ", ConsoleColor.Red);
                 goto CountDesc;
             }
-            if ( count == 0)
+            if ( dbDrug.Count == 0)
             {
                 ConsoleHelper.WriteWithColor(" Drug out of stock ", ConsoleColor.Red);
+                goto CountDesc;
             }
             if (count > dbDrug.Count)
             {

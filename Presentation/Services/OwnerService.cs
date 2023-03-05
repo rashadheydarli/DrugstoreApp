@@ -57,11 +57,12 @@ namespace Presentation.Services
 			string name = Console.ReadLine();
 			ConsoleHelper.WriteWithColor("Enter Owner Surname", ConsoleColor.Cyan);
 			string surname = Console.ReadLine();
-			
+
 			var owner = new Owner
 			{
-                Name = name,
-                Surname = surname,
+				Name = name,
+				Surname = surname,
+				CreatedBy = admin.Username,
                 CreatedAt = DateTime.Now,
             };
 			_ownerRepository.Add(owner);
@@ -114,6 +115,7 @@ namespace Presentation.Services
 			owner.Name = name;
 			owner.Surname = surname;
 			owner.Drugstores = drugstores;
+			owner.ModifiedBy = admin.Username;
 			owner.ModifiedAt = DateTime.Now;
 
 			_ownerRepository.Update(owner);

@@ -107,7 +107,7 @@ public static class Program
                                 ConsoleHelper.WriteWithColor("5 - Get Drugstore by Id", ConsoleColor.Yellow);
                                 ConsoleHelper.WriteWithColor("6 - Get all Drugstores by owner", ConsoleColor.Yellow);
                                 ConsoleHelper.WriteWithColor("7 - Sale", ConsoleColor.Yellow);
-                                ConsoleHelper.WriteWithColor("8 - Go to Main Menu", ConsoleColor.Yellow);
+                                ConsoleHelper.WriteWithColor("0 - Go to Main Menu", ConsoleColor.Yellow);
 
                                 ConsoleHelper.WriteWithColor("--- Select option ---", ConsoleColor.Cyan);
 
